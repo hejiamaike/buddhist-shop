@@ -37,9 +37,9 @@ export function Header() {
 
   // 十六字导航配置
   const navLinks = [
-    { href: '/products', label: t('馆藏分类', 'Collections') },
-    { href: '/categories', label: t('禅意百科', 'Wisdom') },
-    { href: '/about', label: t('发心缘起', 'Origins') },
+    { href: '/products', label: t('全部商品', 'Shop') },
+    { href: '/categories', label: t('分类选购', 'Categories') },
+    { href: '/about', label: t('关于我们', 'About') },
   ]
 
   // 检查是否为当前页面
@@ -122,41 +122,41 @@ export function Header() {
                 style={getNavLinkStyle('/products')}
               >
                 <Package size={14} strokeWidth={1.5} />
-                {t('馆藏分类', 'Collections')}
+                {t('商品分类', 'Categories')}
                 <span className="text-xs transition-transform duration-200" style={{ transform: collectionOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
               </button>
               <div
                 className={`absolute top-full left-0 mt-2 py-2 bg-[#F8F4EE] border border-[#2C2A27]/10 rounded-lg transition-all duration-300 shadow-xl min-w-[180px] z-[9999] ${collectionOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
               >
-                <Link href="/products" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>{t('全部藏品', 'All Products')}</Link>
+                <Link href="/products" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>{t('全部商品', 'All Products')}</Link>
                 <div className="border-t border-[#2C2A27]/10 my-1"></div>
                 <Link href="/products?category=practice-tools" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>
-                  {t('修持法具', 'Ritual Tools')} <span className="text-xs text-[#8A8178] ml-1">{t('修行刚需', 'Essential')}</span>
+                  {t('佛珠手串', 'Malas')} <span className="text-xs text-[#8A8178] ml-1">{t('念珠', 'Beads')}</span>
                 </Link>
                 <Link href="/products?category=offerings" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>
-                  {t('供养庄严', 'Offerings')} <span className="text-xs text-[#8A8178] ml-1">{t('空间布局', 'Home')}</span>
+                  {t('佛像摆件', 'Statues')} <span className="text-xs text-[#8A8178] ml-1">{t('供奉', 'Shrine')}</span>
                 </Link>
                 <Link href="/products?category=dharma-audio" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>
-                  {t('法音经典', 'Dharma Audio')} <span className="text-xs text-[#8A8178] ml-1">{t('文化传播', 'Culture')}</span>
+                  {t('经书音像', 'Sutras')} <span className="text-xs text-[#8A8178] ml-1">{t('经典', 'Books')}</span>
                 </Link>
                 <Link href="/products?category=protective" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>
-                  {t('随身护佑', 'Protection')} <span className="text-xs text-[#8A8178] ml-1">{t('文创饰品', 'Jewelry')}</span>
+                  {t('护身饰品', 'Amulets')} <span className="text-xs text-[#8A8178] ml-1">{t('佩戴', 'Wear')}</span>
                 </Link>
                 <Link href="/products?category=lifestyle" onClick={() => setCollectionOpen(false)} className="block px-4 py-2 text-sm hover:bg-[#2C2A27]/5" style={{ color: '#2C2A27' }}>
-                  {t('禅意生活', 'Zen Lifestyle')} <span className="text-xs text-[#8A8178] ml-1">{t('健康跨界', 'Wellness')}</span>
+                  {t('香炉供具', 'Incense')} <span className="text-xs text-[#8A8178] ml-1">{t('生活', 'Living')}</span>
                 </Link>
               </div>
             </div>
-            {/* 禅意百科 - 书本/智慧图标 */}
+            {/* 分类 - 书本/智慧图标 */}
             <Link
               href="/categories"
               className="transition-colors relative flex items-center gap-1.5"
               style={getNavLinkStyle('/categories')}
             >
               <BookOpen size={14} strokeWidth={1.5} />
-              {t('禅意百科', 'Wisdom')}
+              {t('分类', 'Categories')}
             </Link>
-            {/* 发心缘起 - 心/种子图标 - 产品页不显示 */}
+            {/* 关于我们 - 心/种子图标 - 产品页不显示 */}
             {!isProductPage && (
               <Link
                 href="/about"
@@ -164,7 +164,7 @@ export function Header() {
                 style={getNavLinkStyle('/about')}
               >
                 <Heart size={14} strokeWidth={1.5} />
-                {t('发心缘起', 'Origins')}
+                {t('关于我们', 'About')}
               </Link>
             )}
             {/* 缘起清单 - 购物袋图标 */}
