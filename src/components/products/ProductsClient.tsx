@@ -38,6 +38,18 @@ const FILTER_OPTIONS_EN = {
   ]
 }
 
+// 后备产品数据（Supabase 不可用时使用）
+const FALLBACK_PRODUCTS = [
+  { id: '1', name: '小叶紫檀手串', name_en: 'Sacred Rosewood Mala', slug: 'xiaoye-zitan', price: 899, original_price: 1299, stock: 50, images: ['https://images.unsplash.com/photo-1590534247854-e97d5e3ed38e?w=400'], description: '精选印度小叶紫檀，纹理细腻，油密度高', status: 'active' },
+  { id: '2', name: '铜镀金释迦牟尼佛像', name_en: 'The Enlightened One: Shakyamuni Buddha', slug: 'sakyamuni-buddha', price: 3680, original_price: 4999, stock: 10, images: ['https://images.unsplash.com/photo-1599707367072-cd6cf66a80a2?w=400'], description: '精铜铸造，镀金工艺，庄严殊胜', status: 'active' },
+  { id: '3', name: '天然沉香线香', name_en: 'Premium Agarwood Incense', slug: 'chenxiang-incense', price: 168, stock: 100, images: ['https://images.unsplash.com/photo-1591129841117-3adfd313e34f?w=400'], description: '天然越南芽庄沉香，清新淡雅', status: 'active' },
+  { id: '4', name: '莲花纹铜香炉', name_en: 'Lotus Bronze Censer', slug: 'lotus-censer', price: 458, stock: 25, images: ['https://images.unsplash.com/photo-1602523961358-9dfd4ea5a6d0?w=400'], description: '精铜铸造，莲花纹理，仿古工艺', status: 'active' },
+  { id: '5', name: '心经书法卷轴', name_en: 'Heart Sutra Calligraphy Scroll', slug: 'xingjing-scroll', price: 1280, original_price: 1680, stock: 30, images: ['https://images.unsplash.com/photo-1516962215378-7fa2e137ae91?w=400'], description: '名家手书，宣纸影印，锦绫装裱', status: 'active' },
+  { id: '6', name: '如法棋', name_en: 'Sacred Rufa Oracle Chess', slug: 'rufa-chess', price: 2520, original_price: 3200, stock: 99, images: ['https://images.unsplash.com/photo-1606103935946-6b5a3f1a7d0b?w=400'], description: '承载千年佛学精神体系，密宗投骰游戏', status: 'active' },
+  { id: '7', name: '宋锦丝绒拜垫', name_en: 'Songjin Velvet Cushion', slug: 'songbo', price: 680, stock: 45, images: ['https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=400'], description: '宋锦面料，丝绒内衬，柔软舒适', status: 'active' },
+  { id: '8', name: '转经轮', name_en: 'Prayer Wheel', slug: 'zhuanjinglun', price: 1280, stock: 20, images: ['https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=400'], description: '黄铜转经轮，手工錾刻，经文环绕', status: 'active' },
+]
+
 // 热门搜索
 const HOT_SEARCHES_ZH = ['沉香', '佛像', '手串', '香炉', '心经']
 const HOT_SEARCHES_EN = ['Incense', 'Buddha', 'Mala', 'Censer', 'Sutra']
@@ -118,9 +130,10 @@ function ProductsClientContent({ initialProducts, categories }: ProductsClientPr
     }
   }, [categoryParam, searchParam])
 
-  // 根据语言获取显示产品
+  // 根据语言获取显示产品（优先使用数据库，备选后备数据）
   const displayProducts = useMemo(() => {
-    return initialProducts.map(p => ({
+    const sourceProducts = (initialProducts && initialProducts.length > 0) ? initialProducts : FALLBACK_PRODUCTS
+    return sourceProducts.map(p => ({
       ...p,
       name: isZh ? p.name : (p.name_en || p.name),
       description: isZh ? p.description : (p.name_en || p.description)
