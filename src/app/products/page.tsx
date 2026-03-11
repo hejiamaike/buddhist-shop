@@ -1,5 +1,7 @@
 import { getProducts, ServerProduct } from '@/lib/supabase/products'
 import ProductsClient from '@/components/products/ProductsClient'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 
 // ISR: 每小时重新生成
 export const revalidate = 3600
@@ -14,9 +16,13 @@ export default async function ProductsPage() {
   const products = await getProducts()
 
   return (
-    <ProductsClient
-      initialProducts={products}
-      categories={[]}
-    />
+    <>
+      <Header />
+      <ProductsClient
+        initialProducts={products}
+        categories={[]}
+      />
+      <Footer />
+    </>
   )
 }

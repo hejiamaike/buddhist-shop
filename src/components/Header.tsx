@@ -77,12 +77,12 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50" style={{ background: 'rgba(248, 244, 238, 0.98)', backdropFilter: 'blur(12px)' }}>
+    <header className="sticky top-0 z-50" style={{ background: 'rgba(13, 12, 10, 0.95)', backdropFilter: 'blur(12px)' }}>
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             {/* 佛教法轮图标 */}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8965E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9973a" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <circle cx="12" cy="12" r="6" />
               <circle cx="12" cy="12" r="2" />
@@ -95,7 +95,7 @@ export function Header() {
               <line x1="4.93" y1="19.07" x2="6.34" y2="17.66" />
               <line x1="17.66" y1="6.34" x2="19.07" y2="4.93" />
             </svg>
-            {!isProductPage && <span className="text-xl font-serif" style={{ color: '#2C2A27', fontWeight: 600, letterSpacing: '2px' }}>如法阁</span>}
+            {!isProductPage && <span className="text-xl font-serif text-amber-400/90" style={{ fontWeight: 600, letterSpacing: '2px' }}>如法阁</span>}
           </Link>
 
           {/* 搜索框 - 全局显示 */}
