@@ -170,7 +170,7 @@ function ProductsClientContent({ initialProducts, categories }: ProductsClientPr
     let result = [...displayProducts]
 
     if (selectedCategory) {
-      result = result.filter(p => p.category_id === selectedCategory)
+      result = result.filter(p => p.category_id === selectedCategory || p.category_id === undefined)
     }
 
     if (searchQuery) {
