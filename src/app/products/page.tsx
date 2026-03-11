@@ -1,6 +1,5 @@
 import { getProducts, ServerProduct } from '@/lib/supabase/products'
 import ProductsClient from '@/components/products/ProductsClient'
-import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
 // ISR: 每小时重新生成
@@ -17,7 +16,6 @@ export default async function ProductsPage() {
 
   return (
     <>
-      <Header />
       <ProductsClient
         initialProducts={products}
         categories={[]}
